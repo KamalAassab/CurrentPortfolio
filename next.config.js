@@ -4,8 +4,11 @@ const nextConfig = {
     appDir: true,
   },
   optimizeFonts: false,
+  output: 'export',
+  trailingSlash: true,
   images: {
     domains: ["user-images.githubusercontent.com", "cdn.hashnode.com", "github.com"],
+    unoptimized: true,
   },
   fontLoaders: [
     {
