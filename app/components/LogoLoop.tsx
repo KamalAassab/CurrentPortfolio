@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import Image from 'next/image';
 
 export type LogoItem =
   | {
@@ -70,7 +71,7 @@ const useResizeObserver = (
     return () => {
       observers.forEach(observer => observer?.disconnect());
     };
-  }, dependencies);
+  }, [callback, elements, ...dependencies]);
 };
 
 const useImageLoader = (
@@ -110,7 +111,7 @@ const useImageLoader = (
         img.removeEventListener('error', handleImageLoad);
       });
     };
-  }, dependencies);
+  }, [onLoad, seqRef, ...dependencies]);
 };
 
 const useAnimationLoop = (
@@ -180,7 +181,7 @@ const useAnimationLoop = (
       }
       lastTimestampRef.current = null;
     };
-  }, [targetVelocity, seqWidth, isHovered, pauseOnHover]);
+  }, [targetVelocity, seqWidth, isHovered, pauseOnHover, trackRef]);
 };
 
 export const LogoLoop = React.memo<LogoLoopProps>(
@@ -280,7 +281,7 @@ export const LogoLoop = React.memo<LogoLoopProps>(
             {(item as any).node}
           </span>
         ) : (
-          <img
+          <Image
             className={cx(
               'h-[var(--logoloop-logoHeight)] w-auto block object-contain',
               '[-webkit-user-drag:none] pointer-events-none',
@@ -292,8 +293,8 @@ export const LogoLoop = React.memo<LogoLoopProps>(
             src={(item as any).src}
             srcSet={(item as any).srcSet}
             sizes={(item as any).sizes}
-            width={(item as any).width}
-            height={(item as any).height}
+            width={(item as any).width || 64}
+            height={(item as any).height || 64}
             alt={(item as any).alt ?? ''}
             title={(item as any).title}
             loading="lazy"
