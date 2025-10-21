@@ -7,7 +7,7 @@ import PreLoader from "./animations/PreLoader/PreLoader";
 import { initialBlobityOptions } from "./utils/BlobityConfig";
 import NavBar from "./navbar/NavBar";
 import MobileNav from "./navbar/MobileNav";
-// import TechLogos from "./tech-logos/TechLogos";
+import TechLogos from "./tech-logos/TechLogos";
 
 import dynamic from "next/dynamic";
 import Reviews from "./reviews-section/ReviewGrid";
@@ -51,7 +51,7 @@ export default function Home() {
         <About />
         {/* <Blog /> */}
         <Contact />
-        {/* <TechLogos /> */}
+        <TechLogos />
         <Footer />
       </main>
       {/* </ScrollerMotion> */}
