@@ -3,7 +3,7 @@ import Image from 'next/image';
 
 export type LogoItem =
   | {
-      node: React.ReactNode;
+      node: React.ReactNode | (() => React.ReactNode);
       href?: string;
       title?: string;
       ariaLabel?: string;
@@ -71,7 +71,7 @@ const useResizeObserver = (
     return () => {
       observers.forEach(observer => observer?.disconnect());
     };
-  }, [callback, elements, ...dependencies]);
+  }, [...dependencies]);
 };
 
 const useImageLoader = (
@@ -111,7 +111,7 @@ const useImageLoader = (
         img.removeEventListener('error', handleImageLoad);
       });
     };
-  }, [onLoad, seqRef, ...dependencies]);
+  }, [...dependencies]);
 };
 
 const useAnimationLoop = (
@@ -278,7 +278,7 @@ export const LogoLoop = React.memo<LogoLoopProps>(
             )}
             aria-hidden={!!(item as any).href && !(item as any).ariaLabel}
           >
-            {(item as any).node}
+{typeof (item as any).node === 'function' ? (item as any).node() : (item as any).node}
           </span>
         ) : (
           <Image
@@ -291,15 +291,10 @@ export const LogoLoop = React.memo<LogoLoopProps>(
                 'transition-transform duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] group-hover/item:scale-120'
             )}
             src={(item as any).src}
-            srcSet={(item as any).srcSet}
-            sizes={(item as any).sizes}
+            alt={(item as any).alt ?? ''}
             width={(item as any).width || 64}
             height={(item as any).height || 64}
-            alt={(item as any).alt ?? ''}
-            title={(item as any).title}
             loading="lazy"
-            decoding="async"
-            draggable={false}
           />
         );
 

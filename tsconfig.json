@@ -30,7 +30,8 @@
     "**/*.tsx",
     "app/work-section/projectDetails.ts",
     "app/animations/PreLoader/loader.js",
-    "out/types/**/*.ts"
+    "out/types/**/*.ts",
+    "C:\\Users\\4B\\Desktop\\folio-v1-main\\.next/types/**/*.ts"
   ],
   "exclude": [
     "node_modules"
