@@ -62,7 +62,7 @@ const Contact = () => {
 
           <div className="flex gap-4 text-[16px] font-bold text-[#e4ded7] sm:gap-6 sm:text-[24px] md:gap-4 md:text-[16px] lg:gap-8 lg:text-[28px] self-end">
             <Link
-              href="https://github.com/victorcodess"
+              href="https://github.com/KamalAassab"
               target="_blank"
               aria-label="View GitHub Profile"
             >
@@ -72,7 +72,7 @@ const Contact = () => {
               />
             </Link>
             <Link
-              href="https://www.linkedin.com/in/victor-williams-chukwudi/"
+              href="https://www.linkedin.com/in/kamalaassab"
               target="_blank"
               aria-label="View LinkedIn Profile"
             >
@@ -82,7 +82,7 @@ const Contact = () => {
               />
             </Link>
             <Link
-              href="https://www.instagram.com/victorwill__/"
+              href="https://www.instagram.com/its.urky"
               target="_blank"
               aria-label="View Instagram Profile"
             >
